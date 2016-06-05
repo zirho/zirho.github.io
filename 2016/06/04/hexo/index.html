@@ -39,7 +39,7 @@ Install Git
 Windows: Download &amp;amp; install git.
 Mac: Install it with">
 <meta property="og:image" content="https://zirho.github.io/2016/06/04/hexo/hexo.png">
-<meta property="og:updated_time" content="2016-06-05T18:54:14.000Z">
+<meta property="og:updated_time" content="2016-06-05T18:58:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to setup a blog on github with Hexo">
 <meta name="twitter:description" content="You can just copy &amp;amp; paste the codes below to setup a blog.
@@ -228,8 +228,13 @@ ex) zirho.github.io<br>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp themes/&#123;theme-name&#125;/_config.yml.example themes/&#123;theme-name&#125;/_config.yml</span><br></pre></td></tr></table></figure>
 <p>*<strong>Some themes may differ on _config.yml.example file name</strong><br>
 <strong>Refer to the theme docs</strong></p>
+<p>Update _config.yml to use newly installed theme. (Don't get confused with the theme config file)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br></pre></td></tr></table></figure>
+<p>Find theme attribute and change it.<br>
+ex) theme: hueman</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: &#123;theme-name&#125;</span><br></pre></td></tr></table></figure>
 <h4>Setup blog &amp; deploy info</h4>
-<p>Edit _config.yml in root folder. (Don't get confused with theme config file)</p>
+<p>Edit _config.yml in root folder. (Don't get confused with the theme config file)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br></pre></td></tr></table></figure>
 <p>Update blog info as desired.<br>
 Below is my own for instance.</p>
