@@ -1,6 +1,11 @@
 ---
 title: How to setup a blog on github with Hexo
+categories: 
+- Technology
+- Github
 ---
+
+{% asset_img "hexo.png" hexo + github = blog %}
 
 You can just copy & paste the codes below to setup a blog.
 
