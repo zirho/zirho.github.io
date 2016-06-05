@@ -71,4 +71,8 @@ deploy:
   type: git
   repo: https://github.com/zirho/zirho.github.io.git
   branch: master
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }})"
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+
+markdown:
+  render:
+    html: true
