@@ -2,10 +2,12 @@
 title: How to setup a blog on github with Hexo
 ---
 
-Links
-[Hexo docs](https://hexo.io/docs/)
-
 You can just copy & paste the codes below to setup a blog.
+
+Related links  
+* [Hexo docs](https://hexo.io/docs/)
+* [Hexo themes](https://hexo.io/themes/)
+* [github pages](https://pages.github.com/)
 
 ## Prerequisites
 
