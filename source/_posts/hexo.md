@@ -78,9 +78,22 @@ $ cp themes/{theme-name}/_config.yml.example themes/{theme-name}/_config.yml
 **Refer to the theme docs**  
 
 
+Update _config.yml to use newly installed theme. (Don't get confused with the theme config file)
+
+```bash
+$ vi _config.yml
+```
+
+Find theme attribute and change it.  
+ex) theme: hueman
+
+```bash
+theme: {theme-name}
+```
+
 #### Setup blog & deploy info 
 
-Edit _config.yml in root folder. (Don't get confused with theme config file)
+Edit _config.yml in root folder. (Don't get confused with the theme config file)
 
 ```bash
 $ vi _config.yml
