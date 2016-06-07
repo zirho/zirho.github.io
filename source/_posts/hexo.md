@@ -1,6 +1,9 @@
 ---
 title: How to setup a blog on github with Hexo
 date: 2016/6/4 08:02:12
+tags: [
+  hexo, blog, github, github pages, deploy
+]
 categories: 
 - Technology
 - Github
