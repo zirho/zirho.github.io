@@ -48,7 +48,7 @@ Install node modules.
 
 ```bash
 $ npm init --y
-$ npm i -D karma karma-phantomjs-launcher phantomjs-prebuilt karma-jasmine jasmine-core babel-core babel-loader babel-preset-es2015 webpack karma-webpack
+$ npm i -D karma karma-phantomjs-launcher phantomjs-prebuilt karma-jasmine jasmine-core babel-core babel-polyfill babel-loader babel-preset-es2015 webpack karma-webpack
 $ npm i -g karma-cli
 ```
 
@@ -106,6 +106,8 @@ $ vi test-context.js
 ```
 
 ```javascript
+require("babel-polyfill");
+
 var context = require.context('./source', true, /-spec\.js$/);
 context.keys().forEach(context);
 ```
