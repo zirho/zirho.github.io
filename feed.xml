@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>CodePaste</title>
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/feed.xml" rel="self"/>
   
   <link href="https://zirho.github.io/"/>
   <updated>2016-08-16T05:28:20.000Z</updated>
