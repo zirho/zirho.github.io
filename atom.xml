@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CodePaste</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://zirho.github.io/"/>
+  <updated>2016-08-16T05:28:20.000Z</updated>
+  <id>https://zirho.github.io/</id>
+  
+  <author>
+    <name>Joshua Youngjae Ji</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Refactor legacy code today with webpack!</title>
+    <link href="https://zirho.github.io/2016/08/13/webpack-to-legacy/"/>
+    <id>https://zirho.github.io/2016/08/13/webpack-to-legacy/</id>
+    <published>2016-08-14T04:59:01.000Z</published>
+    <updated>2016-08-16T05:28:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p> </p>
+<img src="/2016/08/13/webpack-to-legacy/wtf_reading.jpg" alt="WHYYYY?" title="WHYYYY?">
+<p><strong>All codes are on github with different branches associated with process for demonstration</strong></p>
+<p><a href="https://github.com/zirho/webpack-to-legacy" target="_blank" rel="external">Github code</a>  <a href="https://github.com/zirho/webpack-to-legacy" target="_blank" rel="external">https://github.com/zirho/webpack-to-legacy</a></p>
+<h1>Legacy code</h1>
+<p>I recently started working at SteelHouse.
+Here, we have several different teams working on different projects.
+One of the projects is an old and out-dated jquery-based web app backed by php server side process.
+Very classic. 🌵</p>
+<p>It may be incorrect to call it a legacy code, but for me, it's very hard to read and add more functions to it.
+Some of the JavaScript file contain more than 12,000 lines of code.
+Mostly, it's not fun working with it.</p>
+<p>I decided to start to refactor some of codes to ES6 modular approach.</p>
+<hr>
+<h1>Objectives</h1>
+<p>When it comes to refactoring legacy code, one of the most important factors is workflow.
+I have a couple of side projects in react, redux, and ES6 with webpack and I really like it.
+Especially, HMR(Hot Module Replacement) has blown my mind. Thanks to contributers to webpack and <a href="https://github.com/gaearon" target="_blank" rel="external">Dan</a>! 🍻</p>
+<p>I knew that this magical thing called HMR can help us make our workflow as smooth as possible.
+So I decided to incorporate that in our project.</p>
+<p>Here are my goals.</p>
+<ol>
+<li>Webpack with HMR</li>
+<li>Using ES6</li>
+<li>Integrating legacy code with ease</li>
+</ol>
+<hr>
+<h1>Preparation</h1>
+<ol>
+<li>
+<p>setup npm package</p>
+<p>If you have not initialized your project with npm yet, this is the perfect time to do so.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init --y</span><br></pre></td></tr></table></figure>
+<p>Add few run-scripts to <code>package.json</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;dev&quot;: &quot;webpack-dev-server --inline --hot --config webpack.config.dev.js&quot;,</span><br><span class="line">  &quot;build&quot;: &quot;webpack&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>install related packages</p>
+<p>Install webpack and other stuff for workflow and transpiling.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -D webpack webpack-dev-server path babel-core babel-loader babel-preset-es2015 babel-preset-stage-2</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>config webpack</p>
+<p>create <code>webpack.config.dev.js</code> file. below is minimal config for webpack-dev-server.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    &apos;hmr&apos;: &apos;webpack-dev-server/client?http://localhost:8080&apos;,</span><br><span class="line">    &apos;hmr2&apos;: &apos;webpack/hot/dev-server&apos;,</span><br><span class="line">    &apos;entryname&apos;: &apos;./js/entry.js&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path:       path.join(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename:   &apos;./bundle.js&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test:   /\.js/,</span><br><span class="line">        loader: &apos;babel&apos;,</span><br><span class="line">        include: __dirname + &apos;/src&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h1>Integrating with legacy code</h1>
+<p>The most tricky part is that legacy code messes up global scope. And they reference each other for no reason.
+One of the JS file has been blown up with more than 12,000 lines of plain old JavaScript.</p>
+<p>So one thing that I had to figure out was this:</p>
+<blockquote>
+<p>Everything that I create in new files has to be available in global scope <strong>almost</strong> automatically.</p>
+</blockquote>
+<p>Which can be achieved like the steps below.</p>
+<ol>
+<li>
+<p>Let's say we have a file called <code>legacy.js</code> that contains a function called <code>plus</code>
+and it is being used everywhere in <code>legacy.js</code></p>
+</li>
+<li>
+<p>I take that function from <code>legacy.js</code> and put it in a newly created file called <code>utils.js</code> and have it exported like below.</p>
+</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export function add(num1, num2) &#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Now we want that function in global scope.</li>
+</ol>
+<p>Let's say webpack will generate the output file <code>bundle.js</code> with the entry file called <code>entry.js</code>.
+It would look like this:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// Accept hot module reloading</span><br><span class="line">// To enable HMR with webpack, you have to make sure to have these lines of code in the entry files to accept hot module reloading.</span><br><span class="line">if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">  if (module.hot) &#123;</span><br><span class="line">    module.hot.accept()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// using namespace import to get all exported things from the file</span><br><span class="line">import * as Utils from &apos;./utils&apos;</span><br><span class="line"></span><br><span class="line">// injecting every function exported from utils.js into global scope(window)</span><br><span class="line">Object.assign(window, Utils)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>And put this output file before the script tag for <code>legacy.js</code> in html.</li>
+</ol>
+<p>Then, logacy.js will get to access global function <code>add</code>.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;legacy.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3>Now all the goodies</h3>
+<p>If I have that set in my workflow,</p>
+<ul>
+<li>I can refactor the extracted function in ES6 syntax like this.</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export const add = (num1, num2) =&gt; &#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>I can add as many functions, objects, and variables as I want in <code>utils.js</code> file in ES6 ways, and those will be in global scope automatically.</p>
+</li>
+<li>
+<p>No more refreshing pages everytime you change js files. This is huge for me!!</p>
+</li>
+</ul>
+<h1>Result 💯</h1>
+<p>I really enjoy coding in ES6 by-passing legacy code these days.
+Also, sometimes along the way, some functions are only used in ES6 codes then I can remove it from global scope.
+That way, it will get cleaner and cleaner.</p>
+<p>Now the biggest file came down to almost 10,000 lines of codes.
+This method is looking very positive.</p>
+<p>Plus, I get to use npm packages and have some unit testability.
+Maybe I will post something about unit tests on ES6 codes later on.</p>
+<p>Happy coding! 🖥  🍺</p>
+<p><strong>All codes are on github with different branches associated with process for demonstration</strong></p>
+<p><a href="https://github.com/zirho/webpack-to-legacy" target="_blank" rel="external">Github code</a>  <a href="https://github.com/zirho/webpack-to-legacy" target="_blank" rel="external">https://github.com/zirho/webpack-to-legacy</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; &lt;/p&gt;
+&lt;img src=&quot;/2016/08/13/webpack-to-legacy/wtf_reading.jpg&quot; alt=&quot;WHYYYY?&quot; title=&quot;WHYYYY?&quot;&gt;
+&lt;p&gt;&lt;strong&gt;All codes are on github with dif
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/tags/JavaScript/"/>
+    
+      <category term="es6" scheme="https://zirho.github.io/tags/es6/"/>
+    
+      <category term="es2015" scheme="https://zirho.github.io/tags/es2015/"/>
+    
+      <category term="babel" scheme="https://zirho.github.io/tags/babel/"/>
+    
+      <category term="webpack" scheme="https://zirho.github.io/tags/webpack/"/>
+    
+      <category term="legacy code" scheme="https://zirho.github.io/tags/legacy-code/"/>
+    
+      <category term="refactor" scheme="https://zirho.github.io/tags/refactor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Private properties for ES6 JavaScript</title>
+    <link href="https://zirho.github.io/2016/06/10/es6-privacy/"/>
+    <id>https://zirho.github.io/2016/06/10/es6-privacy/</id>
+    <published>2016-06-10T21:52:05.000Z</published>
+    <updated>2016-06-10T22:56:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2016/06/10/es6-privacy/private.png" alt="Private Properties in ES6" title="Private Properties in ES6">
+<p>In ES5 JavaScript, it is relatively easy to have private properties in prototype definition.</p>
+<p>It goes like this.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 constructor(as class) definition </span></span><br><span class="line"><span class="comment">// JavaScript is prototype-based language</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public property</span></span><br><span class="line">  <span class="keyword">this</span>.firstname = firstname;</span><br><span class="line">  <span class="keyword">this</span>.lastname = lastname;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// private property </span></span><br><span class="line">  <span class="keyword">var</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public function</span></span><br><span class="line">  <span class="comment">// it needs to be instance method to access private properties</span></span><br><span class="line">  <span class="keyword">this</span>.addTransaction = <span class="function"><span class="keyword">function</span>(<span class="params">trans</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</span><br><span class="line">      records.push(trans);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public function</span></span><br><span class="line">  <span class="keyword">this</span>.getBalance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    records.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">record</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (record.type === <span class="string">'in'</span>) &#123;</span><br><span class="line">        total += record.amount;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        total -= record.amount;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prototype function</span></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">" "</span> + <span class="keyword">this</span>.lastname;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = Person;</span><br></pre></td></tr></table></figure>
+<p>Although, in es6, it is not that easy to achieve and there are many options you can choose.</p>
+<p>You can find all of those here, <a href="http://www.2ality.com/2016/01/private-data-classes.html" target="_blank" rel="external">Managing private data</a>, <a href="https://curiosity-driven.org/private-properties-in-javascript" target="_blank" rel="external">JS class definition</a></p>
+<p>In my opinion, weekmap method is the best, if you need perfect privacy. Other than that, you could use conventional approach using underscore(_) in front of private property names.</p>
+<p>But I found most cases can be solved by modularity approach which looks something like the code below.</p>
+<p>In a file such as <strong>person.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(first, last) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstname = first;</span><br><span class="line">    <span class="keyword">this</span>.lastname = last;</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  addTransaction(trans) &#123;</span><br><span class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</span><br><span class="line">      records.push(trans);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getBalance() &#123;</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    records.forEach(record =&gt; &#123;</span><br><span class="line">      total += record.amount;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstname&#125;</span> <span class="subst">$&#123;this.lastname&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>record</code> property is used as a private data storage and can NOT be accessed out of the modular scope.</p>
+<p>To use this class, you can just import and use.
+Below are unit tests that I wrote against to the <code>Person</code> class.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Person &#125; <span class="keyword">from</span> <span class="string">'./person.js'</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'Person es6 class'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> person;</span><br><span class="line">  beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    person = <span class="keyword">new</span> Person(<span class="string">'Andrew'</span>, <span class="string">'Lincoln'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should be initiated with first name and last name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(person.getFullName()).toEqual(<span class="string">'Andrew Lincoln'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">"should be initiated with 0 balance"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(person.getBalance()).toEqual(<span class="number">0</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Hope this helps.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/2016/06/10/es6-privacy/private.png&quot; alt=&quot;Private Properties in ES6&quot; title=&quot;Private Properties in ES6&quot;&gt;
+&lt;p&gt;In ES5 JavaScript, it i
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/tags/JavaScript/"/>
+    
+      <category term="es6" scheme="https://zirho.github.io/tags/es6/"/>
+    
+      <category term="es2015" scheme="https://zirho.github.io/tags/es2015/"/>
+    
+      <category term="private property" scheme="https://zirho.github.io/tags/private-property/"/>
+    
+      <category term="module" scheme="https://zirho.github.io/tags/module/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unit testing JavaScript ES6 code with Karma</title>
+    <link href="https://zirho.github.io/2016/06/06/karma-es6/"/>
+    <id>https://zirho.github.io/2016/06/06/karma-es6/</id>
+    <published>2016-06-06T21:55:52.000Z</published>
+    <updated>2016-06-10T22:38:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>This posting is referenced to <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" target="_blank" rel="external">this post</a>.</p>
+<img src="/2016/06/06/karma-es6/karma.png" alt="ECMAScript2015 Unit testing" title="ECMAScript2015 Unit testing">
+<h1>Unit Testing ES6 codes</h1>
+<p>To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.</p>
+<p>Here we use webpack to transpile ES6 codes with babel loader using babel es2015 preset.</p>
+<p>But the original posting is outdated since babel is now split in serveral modules. We need few of them to get transpiling working.</p>
+<p>The complete code is on a github repository.<br>
+<a href="https://github.com/zirho/karma-es6-babel-webpack" target="_blank" rel="external">Karma for es6 respository</a></p>
+<h2>Prerequisites</h2>
+<p></p><h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>The best way to install Node.js is with <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>.</p><p></p>
+<p>cURL:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>Wget:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>Once nvm is installed, restart the terminal and run the following command to install Node.js.</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ nvm install 4</span><br></pre></td></tr></tbody></table></figure>
+<p>Alternatively, download and run <a href="http://nodejs.org/" target="_blank" rel="external">the installer</a>.</p>
+<h2>Create project directory</h2>
+<p>Create a directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir karma-testing; <span class="built_in">cd</span> karma-testing</span><br></pre></td></tr></table></figure>
+<h2>Install related modules</h2>
+<p>Install node modules.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm init --y</span><br><span class="line">$ npm i -D karma karma-phantomjs-launcher phantomjs-prebuilt karma-jasmine jasmine-core babel-core babel-polyfill babel-loader babel-preset-es2015 webpack karma-webpack</span><br><span class="line">$ npm i -g karma-cli</span><br></pre></td></tr></table></figure>
+<p>Add or change npm script attribute to package.json</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "tests": "karma start"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2>Generate karma config file</h2>
+<p>karma.conf.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi karma.conf.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">    config.set(&#123;</span><br><span class="line">        browsers: [<span class="string">'PhantomJS'</span>],</span><br><span class="line">        files: [</span><br><span class="line">            &#123; pattern: <span class="string">'test-context.js'</span>, watched: <span class="literal">false</span> &#125;</span><br><span class="line">        ],</span><br><span class="line">        frameworks: [<span class="string">'jasmine'</span>],</span><br><span class="line">        preprocessors: &#123;</span><br><span class="line">            <span class="string">'test-context.js'</span>: [<span class="string">'webpack'</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        webpack: &#123;</span><br><span class="line">            <span class="built_in">module</span>: &#123;</span><br><span class="line">                loaders: [</span><br><span class="line">                    &#123; test: <span class="regexp">/\.js$/</span>, exclude: <span class="regexp">/node_modules/</span>, loader: <span class="string">'babel?presets[]=es2015'</span> &#125;</span><br><span class="line"></span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            watch: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        webpackServer: &#123;</span><br><span class="line">            noInfo: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2>Provide context including testing files</h2>
+<ul>
+<li><strong>The codes below are from <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" target="_blank" rel="external">this post</a>.</strong></li>
+</ul>
+<p>test-context.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">test</span>-context.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"babel-polyfill"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> context = <span class="built_in">require</span>.context(<span class="string">'./source'</span>, <span class="literal">true</span>, <span class="regexp">/-spec\.js$/</span>);</span><br><span class="line">context.keys().forEach(context);</span><br></pre></td></tr></table></figure>
+<p>source/calculator.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">source</span>/calculator.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Calculator</span></span>&#123;</span><br><span class="line">    add(op1,op2)&#123;</span><br><span class="line">        <span class="keyword">return</span> op1 + op2;</span><br><span class="line">    &#125;</span><br><span class="line">    subtract(op1,op2)&#123;</span><br><span class="line">        <span class="keyword">return</span> op1 - op2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>source/calculator-spec.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">source</span>/calculator-spec.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Calculator&#125; <span class="keyword">from</span> <span class="string">'./calculator'</span>;</span><br><span class="line">describe(<span class="string">'Calculator'</span>, () =&gt; &#123;</span><br><span class="line">   it(<span class="string">'should add two numbers'</span>, () =&gt; &#123;</span><br><span class="line">       <span class="keyword">let</span> calculator = <span class="keyword">new</span> Calculator();</span><br><span class="line">       <span class="keyword">let</span> sum = calculator.add(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">       expect(sum).toBe(<span class="number">5</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">    it(<span class="string">'should subtract two numbers'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> calculator = <span class="keyword">new</span> Calculator();</span><br><span class="line">        <span class="keyword">let</span> sum = calculator.subtract(<span class="number">4</span>,<span class="number">1</span>);</span><br><span class="line">        expect(sum).toBe(<span class="number">3</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2>Kicking off unit testing</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run tests</span><br></pre></td></tr></table></figure>
+<p>Enjoy testing ES6 codes!</p>
+<p>The complete code is on a github repository.<br>
+<a href="https://github.com/zirho/karma-es6-babel-webpack" target="_blank" rel="external">Karma for es6 respository</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This posting is referenced to &lt;a href=&quot;http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6&quot; target=&quot;_blank&quot; rel=&quot;e
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/categories/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://zirho.github.io/categories/JavaScript/Node-js/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/tags/JavaScript/"/>
+    
+      <category term="es6" scheme="https://zirho.github.io/tags/es6/"/>
+    
+      <category term="es2015" scheme="https://zirho.github.io/tags/es2015/"/>
+    
+      <category term="karma" scheme="https://zirho.github.io/tags/karma/"/>
+    
+      <category term="babel" scheme="https://zirho.github.io/tags/babel/"/>
+    
+      <category term="webpack" scheme="https://zirho.github.io/tags/webpack/"/>
+    
+      <category term="Unit Testing" scheme="https://zirho.github.io/tags/Unit-Testing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to setup a blog on github with Hexo</title>
+    <link href="https://zirho.github.io/2016/06/04/hexo/"/>
+    <id>https://zirho.github.io/2016/06/04/hexo/</id>
+    <published>2016-06-04T15:02:12.000Z</published>
+    <updated>2016-06-07T01:03:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2016/06/04/hexo/hexo.png" alt="hexo + github = blog" title="hexo + github = blog">
+<p>You can just copy &amp; paste the codes below to setup a blog.</p>
+<p>Related links</p>
+<ul>
+<li><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo docs</a></li>
+<li><a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo themes</a></li>
+<li><a href="https://pages.github.com/" target="_blank" rel="external">github pages</a></li>
+</ul>
+<h2>Prerequisites</h2>
+<div>
+<h3 id="Install-Git" class="article-heading"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git<a class="article-anchor" href="#Install-Git" aria-hidden="true"></a></h3>
+<ul>
+<li>Windows: Download &amp; install <a href="https://git-scm.com/download/win" target="_blank" rel="external">git</a>.</li>
+<li>Mac: Install it with <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="external">Homebrew</a>, <a href="http://www.macports.org/" target="_blank" rel="external">MacPorts</a> or <a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="external">installer</a>.</li>
+<li>Linux (Ubuntu, Debian): <code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS): <code>sudo yum install git-core</code></li>
+</ul>
+<h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>The best way to install Node.js is with <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>.</p>
+<p>cURL:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>Wget:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>Once nvm is installed, restart the terminal and run the following command to install Node.js.</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ nvm install 4</span><br></pre></td></tr></tbody></table></figure>
+<p>Alternatively, download and run <a href="http://nodejs.org/" target="_blank" rel="external">the installer</a>.</p>
+<h3 id="Install-Hexo" class="article-heading"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo<a class="article-anchor" href="#Install-Hexo" aria-hidden="true"></a></h3><p>Once all the requirements are installed, you can install Hexo with npm.</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></tbody></table></figure>
+</div>
+<h4>Setting up a github repository</h4>
+<p>You should change <strong>{blogname}</strong> with your desired word.</p>
+<p>Setup a github repo with the name, <strong>{blogname}</strong>.github.io<br>
+ex) zirho.github.io<br>
+<a href="https://github.com/zirho/zirho.github.io" target="_blank" rel="external">https://github.com/zirho/zirho.github.io</a></p>
+<h2>Setting up Hexo with Github</h2>
+<h4>Setup a blog</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &#123;blogname&#125;</span><br><span class="line">$ cd &#123;blogname&#125;</span><br><span class="line">$ npm i</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<p>This will generate the {blogname} folder and install dependencies.</p>
+<h4>Install a theme</h4>
+<p>Browse <a href="https://hexo.io/themes/" target="_blank" rel="external">here</a> to find out something cool.</p>
+<p>Once you decide your mind, fork it to customize it or just get the github repo url from the theme info.</p>
+<p>ex) <a href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="external">https://github.com/ppoffice/hexo-theme-minos</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &#123;theme-github-url&#125; themes/&#123;theme-name&#125;</span><br></pre></td></tr></table></figure>
+<p>Copy _config.yml.example to _config.yml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp themes/&#123;theme-name&#125;/_config.yml.example themes/&#123;theme-name&#125;/_config.yml</span><br></pre></td></tr></table></figure>
+<p>*<strong>Some themes may differ on _config.yml.example file name</strong><br>
+<strong>Refer to the theme docs</strong></p>
+<p>Update _config.yml to use newly installed theme. (Don't get confused with the theme config file)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br></pre></td></tr></table></figure>
+<p>Find theme attribute and change it.<br>
+ex) theme: hueman</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: &#123;theme-name&#125;</span><br></pre></td></tr></table></figure>
+<h4>Setup blog &amp; deploy info</h4>
+<p>Edit _config.yml in root folder. (Don't get confused with the theme config file)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br></pre></td></tr></table></figure>
+<p>Update blog info as desired.<br>
+Below is my own for instance.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: CodePaste </span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">author: Joshua Youngjae Ji</span><br><span class="line">language: en</span><br><span class="line">timezone: America/Los_Angeles</span><br></pre></td></tr></table></figure>
+<p>Add below code at the bottom of the file for deploy on github repo.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> git</span><br><span class="line"><span class="attr">  repo:</span> &#123;your github repo url&#125;</span><br><span class="line"><span class="attr">  branch:</span> master</span><br><span class="line"><span class="attr">  message:</span> <span class="string">"Site updated: <span class="template-variable">&#123;&#123; now('YYYY-MM-DD HH:mm:ss') &#125;&#125;</span>"</span></span><br></pre></td></tr></table></figure>
+<h4>Deploy the blog</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -S hexo-deployer-git</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>At this point, you should be able to see your blog at http://{blogname}.github.io.</p>
+<h4>Add the source to the github repository (optional)</h4>
+<p>To maintain version of the code, you can make another branch and push the commits.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin &#123;your-git-repo-url&#125;</span><br><span class="line">$ git checkout -b <span class="built_in">source</span> </span><br><span class="line">$ git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<h4>Deploy new post</h4>
+<p>Adding a new post</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &#123;postname&#125;</span><br></pre></td></tr></table></figure>
+<p>Edit the new post file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">source</span>/_posts/&#123;postname&#125;.md</span><br></pre></td></tr></table></figure>
+<p>Regenerate files and deploy at once</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate <span class="_">-d</span></span><br></pre></td></tr></table></figure>
+<p>Happy posting!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/2016/06/04/hexo/hexo.png&quot; alt=&quot;hexo + github = blog&quot; title=&quot;hexo + github = blog&quot;&gt;
+&lt;p&gt;You can just copy &amp;amp; paste the codes bel
+    
+    </summary>
+    
+      <category term="Technology" scheme="https://zirho.github.io/categories/Technology/"/>
+    
+      <category term="Github" scheme="https://zirho.github.io/categories/Technology/Github/"/>
+    
+    
+      <category term="hexo" scheme="https://zirho.github.io/tags/hexo/"/>
+    
+      <category term="blog" scheme="https://zirho.github.io/tags/blog/"/>
+    
+      <category term="github" scheme="https://zirho.github.io/tags/github/"/>
+    
+      <category term="github pages" scheme="https://zirho.github.io/tags/github-pages/"/>
+    
+      <category term="deploy" scheme="https://zirho.github.io/tags/deploy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2012 jQuery Conference in SF</title>
+    <link href="https://zirho.github.io/2012/08/31/jquery-conf/"/>
+    <id>https://zirho.github.io/2012/08/31/jquery-conf/</id>
+    <published>2012-08-31T08:20:00.000Z</published>
+    <updated>2016-06-13T18:24:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<br>
+<img src="/2012/08/31/jquery-conf/title.png" alt="jQuery Conference 2012" title="jQuery Conference 2012">
+<p>While I was staying in Los Angeles, I found that a jQuery Conference was being held in San Francisco. I was very excited about that.</p>
+<p>It was around $300 for a one day session, but totally worth the money.</p>
+<p>I drove all the way up to SF from LA. I considered flying but I just got my roadster Z4, so I drove all the way to SF. It was a lot of fun to drive!</p>
+<p>This was the first time for me to join a tech conference in US. I was kind of worried about fully comprehending it, but Ben was careful enough to talk loud and clear for all international comers. And the slide show definitly helped as well.</p>
+<p>Ben started the session by giving a basic review of jQuery. All of the attendents nodded along since most of them are aquinted with jQuery and JavaScript.
+Ben had a good control of speed based on the level of topic so it was very easy for me to follow along.</p>
+<p>Sharing docs from the conf. I don't think it will be a problem.<br>
+<a href="https://docs.google.com/open?id=0B5bKzlX6SssEamF3MUl0TDVtXzg" target="_blank" rel="external">Docs here</a><br>
+You need to install nodejs. And put it in web root folder.</p>
+<p>I personally want to highlight these.</p>
+<ol>
+<li>Using namespace to maintain event handlers.</li>
+<li>Mange handers and objects using event boubling.</li>
+<li>IIFE</li>
+</ol>
+<p>Ben emphasised the IIFE part and wanted us to checkout a posting for IIFE later.
+<a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank" rel="external">Here</a></p>
+<p>I asked him to take a pic with me :)</p>
+<img src="/2012/08/31/jquery-conf/1.jpg" alt="Ben and me" title="Ben and me">
+<p>This was the 4th visit to SF for me there wasn't a lot of new things to do.
+But it was the first time taking my car so I drove around the city.</p>
+<p>It gets very cold at night so try to keep yourself warm.<br>
+I hope I can make it to the next one.</p>
+<img src="/2012/08/31/jquery-conf/4.jpg" alt="San Francisco Pier" title="San Francisco Pier">
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;br&gt;
+&lt;img src=&quot;/2012/08/31/jquery-conf/title.png&quot; alt=&quot;jQuery Conference 2012&quot; title=&quot;jQuery Conference 2012&quot;&gt;
+&lt;p&gt;While I was staying in Los
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/tags/JavaScript/"/>
+    
+      <category term="jQuery" scheme="https://zirho.github.io/tags/jQuery/"/>
+    
+      <category term="Conference" scheme="https://zirho.github.io/tags/Conference/"/>
+    
+      <category term="SF" scheme="https://zirho.github.io/tags/SF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cloning your web, PipingXE</title>
+    <link href="https://zirho.github.io/2011/02/11/piping-xe/"/>
+    <id>https://zirho.github.io/2011/02/11/piping-xe/</id>
+    <published>2011-02-11T12:46:00.000Z</published>
+    <updated>2016-06-14T03:11:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<br>
+<img src="/2011/02/11/piping-xe/title.gif" alt="Piping XE submited to OSS-competition" title="Piping XE submited to OSS-competition">
+<h2>What is XE?</h2>
+<p>XE stands for XpessEngine.<br>
+It is an open source CMS such as Wordpress or joomla. Sponsored by NHN in South Korea.<br>
+<a href="https://www.xpressengine.com/" target="_blank" rel="external">Find out more</a></p>
+<img src="/2011/02/11/piping-xe/1.gif" alt="About expressengine" title="About expressengine">
+<p>I previously developed a wizard module(WizardXE) for the rapid composition of a website.<br>
+I was the winner of the first competition.<br>
+<a href="https://www.xpressengine.com/xe_contest_2010" target="_blank" rel="external">Find out more</a></p>
+<p>PipingXE is the second module that I built to deploy or clone a website from a server to another server or just in the same machine for different environment.</p>
+<h2>Cloning? How?</h2>
+<p>I built a module to setup an exposing API for XHR request for a specific website.
+It gives all setup information for a website as a format of a serialized php object.<br>
+The receiving part deserializes it and use it to build a website.
+No more repetitive or redundant processes.</p>
+<p><a href="https://www.xpressengine.com/index.php?mid=download&amp;package_id=19325680" target="_blank" rel="external">Learn more about this.</a></p>
+<p>Enjoy cloning websites!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;br&gt;
+&lt;img src=&quot;/2011/02/11/piping-xe/title.gif&quot; alt=&quot;Piping XE submited to OSS-competition&quot; title=&quot;Piping XE submited to OSS-competition&quot;&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="Technology" scheme="https://zirho.github.io/categories/Technology/"/>
+    
+      <category term="OpenSource" scheme="https://zirho.github.io/categories/Technology/OpenSource/"/>
+    
+    
+      <category term="XE" scheme="https://zirho.github.io/tags/XE/"/>
+    
+      <category term="Open-source" scheme="https://zirho.github.io/tags/Open-source/"/>
+    
+      <category term="PHP" scheme="https://zirho.github.io/tags/PHP/"/>
+    
+      <category term="CMS" scheme="https://zirho.github.io/tags/CMS/"/>
+    
+      <category term="contribute" scheme="https://zirho.github.io/tags/contribute/"/>
+    
+  </entry>
+  
+</feed>
