@@ -81,3 +81,13 @@ markdown:
 
 sitemap:
   path: sitemap.xml
+
+nofollow:
+    enable: true
+
+# rss feed auto generator
+feed:
+  type: atom
+  path: feed.xml
+  limit: 20
+  hub:
