@@ -78,3 +78,6 @@ deploy:
 markdown:
   render:
     html: true
+
+sitemap:
+  path: sitemap.xml
