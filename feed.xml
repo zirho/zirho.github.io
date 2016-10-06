@@ -5,7 +5,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://zirho.github.io/"/>
-  <updated>2016-10-06T22:17:42.000Z</updated>
+  <updated>2016-10-06T22:21:42.000Z</updated>
   <id>https://zirho.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://zirho.github.io/2016/10/06/vim-syntastic-local/"/>
     <id>https://zirho.github.io/2016/10/06/vim-syntastic-local/</id>
     <published>2016-10-07T01:01:21.000Z</published>
-    <updated>2016-10-06T22:17:42.000Z</updated>
+    <updated>2016-10-06T22:21:42.000Z</updated>
     
     <content type="html"><![CDATA[<img src="/2016/10/06/vim-syntastic-local/title.png" alt="Vim + Syntastic + local eslint" title="Vim + Syntastic + local eslint">
 <h1>Use one of plugin managers</h1>
@@ -44,6 +44,9 @@ Second does installing plugins. (this may differ by the manager)</p>
 <p>Then, install eslint-cli package in global scope.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g eslint-cli</span><br></pre></td></tr></table></figure>
 <p>Make sure that you can still run <code>eslint</code> but it will run local eslint instead.</p>
+<p>Now let's configure the syntastic in .vimrc
+There are tons of options in syntastic but this may be a good start.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot; syntactic</span><br><span class="line">set statusline+=%#warningmsg#</span><br><span class="line">set statusline+=%&#123;SyntasticStatuslineFlag()&#125;</span><br><span class="line">set statusline+=%*</span><br><span class="line"></span><br><span class="line">let g:syntastic_always_populate_loc_list = 1</span><br><span class="line">let g:syntastic_loc_list_height = 5</span><br><span class="line">let g:syntastic_auto_loc_list = 1</span><br><span class="line">let g:syntastic_check_on_open = 1</span><br><span class="line">let g:syntastic_check_on_wq = 1</span><br><span class="line">let g:syntastic_javascript_checkers = [&apos;eslint&apos;]</span><br><span class="line"></span><br><span class="line">let g:syntastic_error_symbol = &apos;❌&apos;</span><br><span class="line">let g:syntastic_style_error_symbol = &apos;⁉️&apos;</span><br><span class="line">let g:syntastic_warning_symbol = &apos;⚠️&apos;</span><br><span class="line">let g:syntastic_style_warning_symbol = &apos;💩&apos;</span><br><span class="line"></span><br><span class="line">highlight link SyntasticErrorSign SignColumn</span><br><span class="line">highlight link SyntasticWarningSign SignColumn</span><br><span class="line">highlight link SyntasticStyleErrorSign SignColumn</span><br><span class="line">highlight link SyntasticStyleWarningSign SignColumn</span><br></pre></td></tr></table></figure>
 <h1>init eslint for repository</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint --init</span><br></pre></td></tr></table></figure>
 <p>Follow the instructions and answer the questions.</p>
