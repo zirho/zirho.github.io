@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://zirho.github.io/2016/10/06/vim-syntastic-local/</loc>
+        <lastmod>2016-10-06T22:17:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://zirho.github.io/2016/08/13/webpack-to-legacy/</loc>
         <lastmod>2016-08-16T05:28:20.000Z</lastmod>
         <changefreq>weekly</changefreq>

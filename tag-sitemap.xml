@@ -121,13 +121,6 @@
     </url>
 
     <url>
-        <loc>https://zirho.github.io/tags/JavaScript/</loc>
-        <lastmod>2016-08-16T05:28:20.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://zirho.github.io/tags/es6/</loc>
         <lastmod>2016-08-16T05:28:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -165,6 +158,34 @@
     <url>
         <loc>https://zirho.github.io/tags/refactor/</loc>
         <lastmod>2016-08-16T05:28:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/JavaScript/</loc>
+        <lastmod>2016-10-06T22:17:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/vim/</loc>
+        <lastmod>2016-10-06T22:17:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/eslint/</loc>
+        <lastmod>2016-10-06T22:17:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/syntastic/</loc>
+        <lastmod>2016-10-06T22:17:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
