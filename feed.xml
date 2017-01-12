@@ -5,7 +5,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://zirho.github.io/"/>
-  <updated>2016-10-06T22:21:42.000Z</updated>
+  <updated>2017-01-12T05:45:50.000Z</updated>
   <id>https://zirho.github.io/</id>
   
   <author>
@@ -16,11 +16,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Firebase Unit Testing</title>
+    <link href="https://zirho.github.io/2017/01/11/firebase-unit-test/"/>
+    <id>https://zirho.github.io/2017/01/11/firebase-unit-test/</id>
+    <published>2017-01-11T18:34:32.000Z</published>
+    <updated>2017-01-12T05:45:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2017/01/11/firebase-unit-test/firebase-title-image.png" alt="Firebase with Mocha" title="Firebase with Mocha">
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Github: Firebase Unit Test</a></p>
+<h1>Motivation</h1>
+<p>Firebase is a very powerful tool.</p>
+<p>When you build apps on firebase, you want to make sure to set up accessibility rules for database correctly.</p>
+<p>That's why firebase itself has a small UI portion of it for testing it out.</p>
+<img src="/2017/01/11/firebase-unit-test/firebase-simulator.png" alt="Firebase simulator ui" title="Firebase simulator ui">
+<p>A lot of changes may occur in the early phase of project, so you want a way to run many tests automatically to ensure rules are properly set.</p>
+<p>Also, these tests can be used for changes in the future.</p>
+<p>Yeah, BDD or TDD on firebase can be enabled on database scope with this approach.</p>
+<p>My github repo demonstrates how you can accomplish this.</p>
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Firebase Unit Test</a></p>
+<h1>Features</h1>
+<h3>Authenticated user interactions</h3>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/auth.spec.js" rel="external nofollow" target="_blank">Authenticated user test</a></p>
+<p>Firebase does not run any server side scripts. Instead it has a very interesting way to authorize a certain path based on the user session or any way you like.</p>
+<p>You can find more details here.
+<a href="https://firebase.google.com/docs/database/security/" rel="external nofollow" target="_blank">Firebase security rules</a></p>
+<p>So when you run tests, you want the test runner to act like it's been logged in as a certain user.</p>
+<p>To achieve that, you want a tool built by firebase team, called firebase-admin.</p>
+<p>You can login by UID with this tool and run tests with the user session.</p>
+<h3>Unauthenticated user interactions</h3>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/unauth.spec.js" rel="external nofollow" target="_blank">Unauthenticated user test</a></p>
+<p>Your app can have multiple instances of firebase.</p>
+<p>Creating one with another config is very easy.</p>
+<p>Newly created instance will be unauthenticated, so you can use it to test unauth behaviors.</p>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/firebase.js#L8-L12" rel="external nofollow" target="_blank">Creating another firebase instance without a user session</a></p>
+<h1>Conclusion</h1>
+<p>I wrote this repo for testing database rules.</p>
+<p>But this can be used to solve other various problems, such as database CRUD.</p>
+<p>I hope this helps anyone interested in running tests on firebase.</p>
+<p>Enjoy!</p>
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Github: Firebase Unit Test</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/2017/01/11/firebase-unit-test/firebase-title-image.png&quot; alt=&quot;Firebase with Mocha&quot; title=&quot;Firebase with Mocha&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https:
+    
+    </summary>
+    
+      <category term="Technology" scheme="https://zirho.github.io/categories/Technology/"/>
+    
+      <category term="Firebase" scheme="https://zirho.github.io/categories/Technology/Firebase/"/>
+    
+      <category term="Unit testing" scheme="https://zirho.github.io/categories/Technology/Firebase/Unit-testing/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zirho.github.io/tags/JavaScript/"/>
+    
+      <category term="es2015" scheme="https://zirho.github.io/tags/es2015/"/>
+    
+      <category term="firebase" scheme="https://zirho.github.io/tags/firebase/"/>
+    
+      <category term="unit test" scheme="https://zirho.github.io/tags/unit-test/"/>
+    
+      <category term="mocha" scheme="https://zirho.github.io/tags/mocha/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Setup local eslint for JavaScript for VIM with syntastic</title>
     <link href="https://zirho.github.io/2016/10/06/vim-syntastic-local/"/>
     <id>https://zirho.github.io/2016/10/06/vim-syntastic-local/</id>
     <published>2016-10-07T01:01:21.000Z</published>
-    <updated>2016-10-06T22:21:42.000Z</updated>
+    <updated>2017-01-11T18:46:31.000Z</updated>
     
     <content type="html"><![CDATA[<img src="/2016/10/06/vim-syntastic-local/title.png" alt="Vim + Syntastic + local eslint" title="Vim + Syntastic + local eslint">
 <h1>Use one of plugin managers</h1>

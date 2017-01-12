@@ -3,37 +3,37 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Unit testing JavaScript ES6 code with Karma | CodePaste</title>
+    <title>Firebase Unit Testing | CodePaste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="JavaScript,es6,es2015,karma,babel,webpack,Unit Testing" />
+        <meta name="keywords" content="JavaScript,es2015,firebase,unit test,mocha" />
     
-    <meta name="description" content="This posting is referenced to this post.
-
-Unit Testing ES6 codes
-To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.
-Here we us">
+    <meta name="description" content="Github: Firebase Unit Test
+Motivation
+Firebase is a very powerful tool.
+When you build apps on firebase, you want to make sure to set up accessibility rules for database correctly.
+That&apos;s why firebas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unit testing JavaScript ES6 code with Karma">
-<meta property="og:url" content="https://zirho.github.io/2016/06/06/karma-es6/index.html">
+<meta property="og:title" content="Firebase Unit Testing">
+<meta property="og:url" content="https://zirho.github.io/2017/01/11/firebase-unit-test/index.html">
 <meta property="og:site_name" content="CodePaste">
-<meta property="og:description" content="This posting is referenced to this post.
-
-Unit Testing ES6 codes
-To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.
-Here we us">
-<meta property="og:image" content="https://zirho.github.io/2016/06/06/karma-es6/karma.png">
-<meta property="og:updated_time" content="2016-06-10T22:38:07.000Z">
+<meta property="og:description" content="Github: Firebase Unit Test
+Motivation
+Firebase is a very powerful tool.
+When you build apps on firebase, you want to make sure to set up accessibility rules for database correctly.
+That&apos;s why firebas">
+<meta property="og:image" content="https://zirho.github.io/2017/01/11/firebase-unit-test/firebase-title-image.png">
+<meta property="og:updated_time" content="2017-01-12T05:45:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unit testing JavaScript ES6 code with Karma">
-<meta name="twitter:description" content="This posting is referenced to this post.
-
-Unit Testing ES6 codes
-To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.
-Here we us">
-<meta name="twitter:image" content="https://zirho.github.io/2016/06/06/karma-es6/karma.png">
+<meta name="twitter:title" content="Firebase Unit Testing">
+<meta name="twitter:description" content="Github: Firebase Unit Test
+Motivation
+Firebase is a very powerful tool.
+When you build apps on firebase, you want to make sure to set up accessibility rules for database correctly.
+That&apos;s why firebas">
+<meta name="twitter:image" content="https://zirho.github.io/2017/01/11/firebase-unit-test/firebase-title-image.png">
     
-    <link rel="canonical" href="https://zirho.github.io/2016/06/06/karma-es6/"/>
+    <link rel="canonical" href="https://zirho.github.io/2017/01/11/firebase-unit-test/"/>
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     
 
@@ -137,79 +137,65 @@ Here we us">
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/JavaScript/">JavaScript</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/JavaScript/Node-js/">Node.js</a>
+    <a class="page-title-link" href="/categories/Technology/">Technology</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Technology/Firebase/">Firebase</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Technology/Firebase/Unit-testing/">Unit testing</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-karma-es6" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-firebase-unit-test" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Unit testing JavaScript ES6 code with Karma
+        Firebase Unit Testing
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/06/06/karma-es6/" class="article-date">
-    <time datetime="2016-06-06T21:55:52.000Z" itemprop="datePublished">06-06-2016</time>
+            <a href="/2017/01/11/firebase-unit-test/" class="article-date">
+    <time datetime="2017-01-11T18:34:32.000Z" itemprop="datePublished">01-11-2017</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es2015/">es2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/karma/">karma</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es2015/">es2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firebase/">firebase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mocha/">mocha</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unit-test/">unit test</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>This posting is referenced to <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow" target="_blank">this post</a>.</p>
-<img src="/2016/06/06/karma-es6/karma.png" alt="ECMAScript2015 Unit testing" title="ECMAScript2015 Unit testing">
-<h1>Unit Testing ES6 codes</h1>
-<p>To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.</p>
-<p>Here we use webpack to transpile ES6 codes with babel loader using babel es2015 preset.</p>
-<p>But the original posting is outdated since babel is now split in serveral modules. We need few of them to get transpiling working.</p>
-<p>The complete code is on a github repository.<br>
-<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow" target="_blank">Karma for es6 respository</a></p>
-<h2>Prerequisites</h2>
-<p></p><h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>The best way to install Node.js is with <a href="https://github.com/creationix/nvm" target="_blank" rel="external nofollow">nvm</a>.</p><p></p>
-<p>cURL:</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
-<p>Wget:</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
-<p>Once nvm is installed, restart the terminal and run the following command to install Node.js.</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ nvm install 4</span><br></pre></td></tr></tbody></table></figure>
-<p>Alternatively, download and run <a href="http://nodejs.org/" target="_blank" rel="external nofollow">the installer</a>.</p>
-<h2>Create project directory</h2>
-<p>Create a directory.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir karma-testing; <span class="built_in">cd</span> karma-testing</span><br></pre></td></tr></table></figure>
-<h2>Install related modules</h2>
-<p>Install node modules.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm init --y</span><br><span class="line">$ npm i -D karma karma-phantomjs-launcher phantomjs-prebuilt karma-jasmine jasmine-core babel-core babel-polyfill babel-loader babel-preset-es2015 webpack karma-webpack</span><br><span class="line">$ npm i -g karma-cli</span><br></pre></td></tr></table></figure>
-<p>Add or change npm script attribute to package.json</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "tests": "karma start"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h2>Generate karma config file</h2>
-<p>karma.conf.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi karma.conf.js</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">    config.set(&#123;</span><br><span class="line">        browsers: [<span class="string">'PhantomJS'</span>],</span><br><span class="line">        files: [</span><br><span class="line">            &#123; pattern: <span class="string">'test-context.js'</span>, watched: <span class="literal">false</span> &#125;</span><br><span class="line">        ],</span><br><span class="line">        frameworks: [<span class="string">'jasmine'</span>],</span><br><span class="line">        preprocessors: &#123;</span><br><span class="line">            <span class="string">'test-context.js'</span>: [<span class="string">'webpack'</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        webpack: &#123;</span><br><span class="line">            <span class="built_in">module</span>: &#123;</span><br><span class="line">                loaders: [</span><br><span class="line">                    &#123; test: <span class="regexp">/\.js$/</span>, exclude: <span class="regexp">/node_modules/</span>, loader: <span class="string">'babel?presets[]=es2015'</span> &#125;</span><br><span class="line"></span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            watch: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        webpackServer: &#123;</span><br><span class="line">            noInfo: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2>Provide context including testing files</h2>
-<ul>
-<li><strong>The codes below are from <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow" target="_blank">this post</a>.</strong></li>
-</ul>
-<p>test-context.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">test</span>-context.js</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"babel-polyfill"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> context = <span class="built_in">require</span>.context(<span class="string">'./source'</span>, <span class="literal">true</span>, <span class="regexp">/-spec\.js$/</span>);</span><br><span class="line">context.keys().forEach(context);</span><br></pre></td></tr></table></figure>
-<p>source/calculator.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">source</span>/calculator.js</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Calculator</span></span>&#123;</span><br><span class="line">    add(op1,op2)&#123;</span><br><span class="line">        <span class="keyword">return</span> op1 + op2;</span><br><span class="line">    &#125;</span><br><span class="line">    subtract(op1,op2)&#123;</span><br><span class="line">        <span class="keyword">return</span> op1 - op2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>source/calculator-spec.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="built_in">source</span>/calculator-spec.js</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Calculator&#125; <span class="keyword">from</span> <span class="string">'./calculator'</span>;</span><br><span class="line">describe(<span class="string">'Calculator'</span>, () =&gt; &#123;</span><br><span class="line">   it(<span class="string">'should add two numbers'</span>, () =&gt; &#123;</span><br><span class="line">       <span class="keyword">let</span> calculator = <span class="keyword">new</span> Calculator();</span><br><span class="line">       <span class="keyword">let</span> sum = calculator.add(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">       expect(sum).toBe(<span class="number">5</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">    it(<span class="string">'should subtract two numbers'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> calculator = <span class="keyword">new</span> Calculator();</span><br><span class="line">        <span class="keyword">let</span> sum = calculator.subtract(<span class="number">4</span>,<span class="number">1</span>);</span><br><span class="line">        expect(sum).toBe(<span class="number">3</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2>Kicking off unit testing</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run tests</span><br></pre></td></tr></table></figure>
-<p>Enjoy testing ES6 codes!</p>
-<p>The complete code is on a github repository.<br>
-<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow" target="_blank">Karma for es6 respository</a></p>
+            <img src="/2017/01/11/firebase-unit-test/firebase-title-image.png" alt="Firebase with Mocha" title="Firebase with Mocha">
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Github: Firebase Unit Test</a></p>
+<h1>Motivation</h1>
+<p>Firebase is a very powerful tool.</p>
+<p>When you build apps on firebase, you want to make sure to set up accessibility rules for database correctly.</p>
+<p>That's why firebase itself has a small UI portion of it for testing it out.</p>
+<img src="/2017/01/11/firebase-unit-test/firebase-simulator.png" alt="Firebase simulator ui" title="Firebase simulator ui">
+<p>A lot of changes may occur in the early phase of project, so you want a way to run many tests automatically to ensure rules are properly set.</p>
+<p>Also, these tests can be used for changes in the future.</p>
+<p>Yeah, BDD or TDD on firebase can be enabled on database scope with this approach.</p>
+<p>My github repo demonstrates how you can accomplish this.</p>
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Firebase Unit Test</a></p>
+<h1>Features</h1>
+<h3>Authenticated user interactions</h3>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/auth.spec.js" rel="external nofollow" target="_blank">Authenticated user test</a></p>
+<p>Firebase does not run any server side scripts. Instead it has a very interesting way to authorize a certain path based on the user session or any way you like.</p>
+<p>You can find more details here.
+<a href="https://firebase.google.com/docs/database/security/" rel="external nofollow" target="_blank">Firebase security rules</a></p>
+<p>So when you run tests, you want the test runner to act like it's been logged in as a certain user.</p>
+<p>To achieve that, you want a tool built by firebase team, called firebase-admin.</p>
+<p>You can login by UID with this tool and run tests with the user session.</p>
+<h3>Unauthenticated user interactions</h3>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/unauth.spec.js" rel="external nofollow" target="_blank">Unauthenticated user test</a></p>
+<p>Your app can have multiple instances of firebase.</p>
+<p>Creating one with another config is very easy.</p>
+<p>Newly created instance will be unauthenticated, so you can use it to test unauth behaviors.</p>
+<p><a href="https://github.com/zirho/firebase-unit-test/blob/master/src/firebase.js#L8-L12" rel="external nofollow" target="_blank">Creating another firebase instance without a user session</a></p>
+<h1>Conclusion</h1>
+<p>I wrote this repo for testing database rules.</p>
+<p>But this can be used to solve other various problems, such as database CRUD.</p>
+<p>I hope this helps anyone interested in running tests on firebase.</p>
+<p>Enjoy!</p>
+<p><a href="https://github.com/zirho/firebase-unit-test" rel="external nofollow" target="_blank">Github: Firebase Unit Test</a></p>
 
         </div>
         <footer class="article-footer">
@@ -217,7 +203,7 @@ Here we us">
 
 
 
-    <a data-url="https://zirho.github.io/2016/06/06/karma-es6/" data-id="cixtyc6jz000b4vuzc1to8c6c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zirho.github.io/2017/01/11/firebase-unit-test/" data-id="cixtyc6jp00054vuz9dqdo3tf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -318,20 +304,10 @@ Here we us">
         
 <nav id="article-nav">
     
-        <a href="/2016/06/10/es6-privacy/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Private properties for ES6 JavaScript
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/06/04/hexo/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/10/06/vim-syntastic-local/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">How to setup a blog on github with Hexo</p>
+        <p class="article-nav-title">Setup local eslint for JavaScript for VIM with syntastic</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -547,7 +523,7 @@ Here we us">
     var disqus_shortname = 'zirhocodepaste';
     
     
-    var disqus_url = 'https://zirho.github.io/2016/06/06/karma-es6/';
+    var disqus_url = 'https://zirho.github.io/2017/01/11/firebase-unit-test/';
     
     (function() {
     var dsq = document.createElement('script');

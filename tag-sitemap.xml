@@ -128,13 +128,6 @@
     </url>
 
     <url>
-        <loc>https://zirho.github.io/tags/es2015/</loc>
-        <lastmod>2016-08-16T05:28:20.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://zirho.github.io/tags/babel/</loc>
         <lastmod>2016-08-16T05:28:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -163,29 +156,57 @@
     </url>
 
     <url>
-        <loc>https://zirho.github.io/tags/JavaScript/</loc>
-        <lastmod>2016-10-06T22:21:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://zirho.github.io/tags/vim/</loc>
-        <lastmod>2016-10-06T22:21:42.000Z</lastmod>
+        <lastmod>2017-01-11T18:46:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/eslint/</loc>
-        <lastmod>2016-10-06T22:21:42.000Z</lastmod>
+        <lastmod>2017-01-11T18:46:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/syntastic/</loc>
-        <lastmod>2016-10-06T22:21:42.000Z</lastmod>
+        <lastmod>2017-01-11T18:46:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/JavaScript/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/es2015/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/firebase/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/unit-test/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/mocha/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

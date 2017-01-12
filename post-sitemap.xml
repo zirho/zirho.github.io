@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>https://zirho.github.io/2017/01/11/firebase-unit-test/</loc>
+        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://zirho.github.io/2016/10/06/vim-syntastic-local/</loc>
-        <lastmod>2016-10-06T22:21:42.000Z</lastmod>
+        <lastmod>2017-01-11T18:46:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
