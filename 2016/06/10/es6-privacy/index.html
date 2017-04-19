@@ -6,33 +6,28 @@
     <title>Private properties for ES6 JavaScript | CodePaste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="JavaScript,es6,es2015,private property,module" />
+        <meta name="keywords" content="JavaScript,es6,es2015,private property,module">
     
-    <meta name="description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition.
-It goes like this.
-1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
+    <meta name="description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition. It goes like this. 1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
+<meta name="keywords" content="JavaScript,es6,es2015,private property,module">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Private properties for ES6 JavaScript">
 <meta property="og:url" content="https://zirho.github.io/2016/06/10/es6-privacy/index.html">
 <meta property="og:site_name" content="CodePaste">
-<meta property="og:description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition.
-It goes like this.
-1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
+<meta property="og:description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition. It goes like this. 1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
 <meta property="og:image" content="https://zirho.github.io/2016/06/10/es6-privacy/private.png">
 <meta property="og:updated_time" content="2016-06-10T22:56:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Private properties for ES6 JavaScript">
-<meta name="twitter:description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition.
-It goes like this.
-1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
+<meta name="twitter:description" content="In ES5 JavaScript, it is relatively easy to have private properties in prototype definition. It goes like this. 1234567891011121314151617181920212223242526272829303132333435363738394041// es5 constru">
 <meta name="twitter:image" content="https://zirho.github.io/2016/06/10/es6-privacy/private.png">
     
-    <link rel="canonical" href="https://zirho.github.io/2016/06/10/es6-privacy/"/>
-    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="canonical" href="https://zirho.github.io/2016/06/10/es6-privacy/">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
     
 
     
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
@@ -53,7 +48,7 @@ It goes like this.
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +66,7 @@ It goes like this.
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
@@ -82,14 +77,14 @@ It goes like this.
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -135,7 +130,7 @@ It goes like this.
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-es6-privacy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-es6-privacy" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -160,17 +155,17 @@ It goes like this.
             <img src="/2016/06/10/es6-privacy/private.png" alt="Private Properties in ES6" title="Private Properties in ES6">
 <p>In ES5 JavaScript, it is relatively easy to have private properties in prototype definition.</p>
 <p>It goes like this.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 constructor(as class) definition </span></span><br><span class="line"><span class="comment">// JavaScript is prototype-based language</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public property</span></span><br><span class="line">  <span class="keyword">this</span>.firstname = firstname;</span><br><span class="line">  <span class="keyword">this</span>.lastname = lastname;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// private property </span></span><br><span class="line">  <span class="keyword">var</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public function</span></span><br><span class="line">  <span class="comment">// it needs to be instance method to access private properties</span></span><br><span class="line">  <span class="keyword">this</span>.addTransaction = <span class="function"><span class="keyword">function</span>(<span class="params">trans</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</span><br><span class="line">      records.push(trans);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// public function</span></span><br><span class="line">  <span class="keyword">this</span>.getBalance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    records.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">record</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (record.type === <span class="string">'in'</span>) &#123;</span><br><span class="line">        total += record.amount;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        total -= record.amount;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prototype function</span></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">" "</span> + <span class="keyword">this</span>.lastname;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = Person;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// es5 constructor(as class) definition </span></div><div class="line"><span class="comment">// JavaScript is prototype-based language</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// public property</span></div><div class="line">  <span class="keyword">this</span>.firstname = firstname;</div><div class="line">  <span class="keyword">this</span>.lastname = lastname;</div><div class="line"></div><div class="line">  <span class="comment">// private property </span></div><div class="line">  <span class="keyword">var</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</div><div class="line"></div><div class="line">  <span class="comment">// public function</span></div><div class="line">  <span class="comment">// it needs to be instance method to access private properties</span></div><div class="line">  <span class="keyword">this</span>.addTransaction = <span class="function"><span class="keyword">function</span>(<span class="params">trans</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</div><div class="line">      records.push(trans);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// public function</span></div><div class="line">  <span class="keyword">this</span>.getBalance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> total = <span class="number">0</span>;</div><div class="line"></div><div class="line">    records.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">record</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span> (record.type === <span class="string">'in'</span>) &#123;</div><div class="line">        total += record.amount;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        total -= record.amount;  </div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> total;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Prototype function</span></div><div class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">" "</span> + <span class="keyword">this</span>.lastname;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = Person;</div></pre></td></tr></table></figure>
 <p>Although, in es6, it is not that easy to achieve and there are many options you can choose.</p>
 <p>You can find all of those here, <a href="http://www.2ality.com/2016/01/private-data-classes.html" rel="external nofollow" target="_blank">Managing private data</a>, <a href="https://curiosity-driven.org/private-properties-in-javascript" rel="external nofollow" target="_blank">JS class definition</a></p>
 <p>In my opinion, weekmap method is the best, if you need perfect privacy. Other than that, you could use conventional approach using underscore(_) in front of private property names.</p>
 <p>But I found most cases can be solved by modularity approach which looks something like the code below.</p>
 <p>In a file such as <strong>person.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(first, last) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstname = first;</span><br><span class="line">    <span class="keyword">this</span>.lastname = last;</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  addTransaction(trans) &#123;</span><br><span class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</span><br><span class="line">      records.push(trans);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getBalance() &#123;</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    records.forEach(record =&gt; &#123;</span><br><span class="line">      total += record.amount;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getFullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstname&#125;</span> <span class="subst">$&#123;this.lastname&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> records = [&#123;type: <span class="string">'in'</span>, amount: <span class="number">0</span>&#125;];</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(first, last) &#123;</div><div class="line">    <span class="keyword">this</span>.firstname = first;</div><div class="line">    <span class="keyword">this</span>.lastname = last;</div><div class="line">  &#125;</div><div class="line">   </div><div class="line">  addTransaction(trans) &#123;</div><div class="line">    <span class="keyword">if</span> (trans.hasOwnProperty(<span class="string">'type'</span>) &amp;&amp; trans.hasOwnProperty(<span class="string">'amount'</span>)) &#123;</div><div class="line">      records.push(trans);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getBalance() &#123;</div><div class="line">    <span class="keyword">let</span> total = <span class="number">0</span>;</div><div class="line"></div><div class="line">    records.forEach(record =&gt; &#123;</div><div class="line">      total += record.amount;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> total;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getFullName() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstname&#125;</span> <span class="subst">$&#123;this.lastname&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>record</code> property is used as a private data storage and can NOT be accessed out of the modular scope.</p>
 <p>To use this class, you can just import and use.
 Below are unit tests that I wrote against to the <code>Person</code> class.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Person &#125; <span class="keyword">from</span> <span class="string">'./person.js'</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'Person es6 class'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> person;</span><br><span class="line">  beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    person = <span class="keyword">new</span> Person(<span class="string">'Andrew'</span>, <span class="string">'Lincoln'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should be initiated with first name and last name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(person.getFullName()).toEqual(<span class="string">'Andrew Lincoln'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">"should be initiated with 0 balance"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(person.getBalance()).toEqual(<span class="number">0</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Person &#125; <span class="keyword">from</span> <span class="string">'./person.js'</span>;</div><div class="line"></div><div class="line">describe(<span class="string">'Person es6 class'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> person;</div><div class="line">  beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    person = <span class="keyword">new</span> Person(<span class="string">'Andrew'</span>, <span class="string">'Lincoln'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'should be initiated with first name and last name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    expect(person.getFullName()).toEqual(<span class="string">'Andrew Lincoln'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">"should be initiated with 0 balance"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    expect(person.getBalance()).toEqual(<span class="number">0</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>Hope this helps.</p>
 
         </div>
@@ -179,7 +174,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
 
 
 
-    <a data-url="https://zirho.github.io/2016/06/10/es6-privacy/" data-id="cixtyc6jd00004vuzdhhj67or" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zirho.github.io/2016/06/10/es6-privacy/" data-id="cj1oh1gb20009bxuzm3fd5wt4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -263,7 +258,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/zirho" target="_blank">
+                    <a class="social-tooltip" title="github" href="https://github.com/zirho" target="_blank" rel="external nofollow">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -271,7 +266,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
             
                 
                 <li>
-                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank">
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank" rel="external nofollow">
                         <i class="icon fa fa-linkedin"></i>
                     </a>
                 </li>
@@ -288,20 +283,20 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
         
 <nav id="article-nav">
     
-        <a href="/2016/08/13/webpack-to-legacy/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/06/06/karma-es6/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            Refactor legacy code today with webpack!
+            Unit testing JavaScript ES6 code with Karma
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2016/06/06/karma-es6/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/08/13/webpack-to-legacy/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Unit testing JavaScript ES6 code with Karma</p>
+        <p class="article-nav-title">Refactor legacy code today with webpack!</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -316,6 +311,26 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/17/responsive-layout/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/04/17/responsive-layout/layout-title.png)" alt="Common Responsive Layout" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Technology/">Technology</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Technology/OpenSource/">OpenSource</a></p>
+                            <p class="item-title"><a href="/2017/04/17/responsive-layout/" class="title">Common Responsive Layout</a></p>
+                            <p class="item-date"><time datetime="2017-04-18T00:01:33.000Z" itemprop="datePublished">04-17-2017</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -397,26 +412,6 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/06/06/karma-es6/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2016/06/06/karma-es6/karma.png)" alt="Unit testing JavaScript ES6 code with Karma" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/JavaScript/Node-js/">Node.js</a></p>
-                            <p class="item-title"><a href="/2016/06/06/karma-es6/" class="title">Unit testing JavaScript ES6 code with Karma</a></p>
-                            <p class="item-date"><time datetime="2016-06-06T21:55:52.000Z" itemprop="datePublished">06-06-2016</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -426,7 +421,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Node-js/">Node.js</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/">Firebase</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/Unit-testing/">Unit testing</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/OpenSource/">OpenSource</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/VIM/">VIM</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Node-js/">Node.js</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/">Firebase</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/Unit-testing/">Unit testing</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/OpenSource/">OpenSource</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/VIM/">VIM</a><span class="category-list-count">1</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -436,7 +431,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -446,7 +441,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMS/">CMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-source/">Open-source</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SF/">SF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XE/">XE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contribute/">contribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firebase/">firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/karma/">karma</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/legacy-code/">legacy code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private-property/">private property</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refactor/">refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntastic/">syntastic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMS/">CMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-Browsing/">Cross Browsing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Layout/">Layout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-source/">Open-source</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SF/">SF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XE/">XE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contribute/">contribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firebase/">firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/karma/">karma</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/legacy-code/">legacy code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private-property/">private property</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refactor/">refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntastic/">syntastic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -456,7 +451,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CMS/" style="font-size: 10px;">CMS</a> <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Open-source/" style="font-size: 10px;">Open-source</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/SF/" style="font-size: 10px;">SF</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/XE/" style="font-size: 10px;">XE</a> <a href="/tags/babel/" style="font-size: 12.5px;">babel</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/contribute/" style="font-size: 10px;">contribute</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/es2015/" style="font-size: 17.5px;">es2015</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firebase/" style="font-size: 10px;">firebase</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/legacy-code/" style="font-size: 10px;">legacy code</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/private-property/" style="font-size: 10px;">private property</a> <a href="/tags/refactor/" style="font-size: 10px;">refactor</a> <a href="/tags/syntastic/" style="font-size: 10px;">syntastic</a> <a href="/tags/unit-test/" style="font-size: 10px;">unit test</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a>
+            <a href="/tags/CMS/" style="font-size: 10px;">CMS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Cross-Browsing/" style="font-size: 10px;">Cross Browsing</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Layout/" style="font-size: 10px;">Layout</a> <a href="/tags/Open-source/" style="font-size: 10px;">Open-source</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/SF/" style="font-size: 10px;">SF</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/XE/" style="font-size: 10px;">XE</a> <a href="/tags/babel/" style="font-size: 12.5px;">babel</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/contribute/" style="font-size: 10px;">contribute</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/es2015/" style="font-size: 17.5px;">es2015</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firebase/" style="font-size: 10px;">firebase</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/legacy-code/" style="font-size: 10px;">legacy code</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/private-property/" style="font-size: 10px;">private property</a> <a href="/tags/refactor/" style="font-size: 10px;">refactor</a> <a href="/tags/syntastic/" style="font-size: 10px;">syntastic</a> <a href="/tags/unit-test/" style="font-size: 10px;">unit test</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a>
         </div>
     </div>
 
@@ -469,7 +464,7 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io">Hexo</a>
+                        <a href="http://hexo.io" rel="external nofollow" target="_blank">Hexo</a>
                     </li>
                 
             </ul>
@@ -545,4 +540,4 @@ Below are unit tests that I wrote against to the <code>Person</code> class.</p>
 
     </div>
 </body>
-</html>
+
