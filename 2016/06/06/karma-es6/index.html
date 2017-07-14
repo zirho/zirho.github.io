@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="CodePaste">
 <meta property="og:description" content="This posting is referenced to this post.  Unit Testing ES6 codes To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them. Here we us">
 <meta property="og:image" content="https://zirho.github.io/2016/06/06/karma-es6/karma.png">
-<meta property="og:updated_time" content="2016-06-10T22:38:07.000Z">
+<meta property="og:updated_time" content="2017-04-19T04:41:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unit testing JavaScript ES6 code with Karma">
 <meta name="twitter:description" content="This posting is referenced to this post.  Unit Testing ES6 codes To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them. Here we us">
@@ -152,23 +152,23 @@
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>This posting is referenced to <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow" target="_blank">this post</a>.</p>
+            <p>This posting is referenced to <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow noopener noreferrer" target="_blank">this post</a>.</p>
 <img src="/2016/06/06/karma-es6/karma.png" alt="ECMAScript2015 Unit testing" title="ECMAScript2015 Unit testing">
 <h1>Unit Testing ES6 codes</h1>
 <p>To run unit tests against ES6 codes, we need a way to transpile the codes before the unit test runner(karma) processes them.</p>
 <p>Here we use webpack to transpile ES6 codes with babel loader using babel es2015 preset.</p>
 <p>But the original posting is outdated since babel is now split in serveral modules. We need few of them to get transpiling working.</p>
 <p>The complete code is on a github repository.<br>
-<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow" target="_blank">Karma for es6 respository</a></p>
+<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow noopener noreferrer" target="_blank">Karma for es6 respository</a></p>
 <h2>Prerequisites</h2>
-<p></p><h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>The best way to install Node.js is with <a href="https://github.com/creationix/nvm" target="_blank" rel="external nofollow">nvm</a>.</p><p></p>
+<p></p><h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>The best way to install Node.js is with <a href="https://github.com/creationix/nvm" target="_blank" rel="external nofollow noopener noreferrer">nvm</a>.</p><p></p>
 <p>cURL:</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
 <p>Wget:</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></tbody></table></figure>
 <p>Once nvm is installed, restart the terminal and run the following command to install Node.js.</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ nvm install 4</span><br></pre></td></tr></tbody></table></figure>
-<p>Alternatively, download and run <a href="http://nodejs.org/" target="_blank" rel="external nofollow">the installer</a>.</p>
+<p>Alternatively, download and run <a href="http://nodejs.org/" target="_blank" rel="external nofollow noopener noreferrer">the installer</a>.</p>
 <h2>Create project directory</h2>
 <p>Create a directory.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir karma-testing; <span class="built_in">cd</span> karma-testing</div></pre></td></tr></table></figure>
@@ -180,14 +180,14 @@
 <h2>Generate karma config file</h2>
 <p>karma.conf.js</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi karma.conf.js</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">    config.set(&#123;</div><div class="line">        browsers: [<span class="string">'PhantomJS'</span>],</div><div class="line">        files: [</div><div class="line">            &#123; pattern: <span class="string">'test-context.js'</span>, watched: <span class="literal">false</span> &#125;</div><div class="line">        ],</div><div class="line">        frameworks: [<span class="string">'jasmine'</span>],</div><div class="line">        preprocessors: &#123;</div><div class="line">            <span class="string">'test-context.js'</span>: [<span class="string">'webpack'</span>]</div><div class="line">        &#125;,</div><div class="line">        webpack: &#123;</div><div class="line">            <span class="built_in">module</span>: &#123;</div><div class="line">                loaders: [</div><div class="line">                    &#123; test: <span class="regexp">/\.js$/</span>, exclude: <span class="regexp">/node_modules/</span>, loader: <span class="string">'babel?presets[]=es2015'</span> &#125;</div><div class="line"></div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            watch: <span class="literal">true</span></div><div class="line">        &#125;,</div><div class="line">        webpackServer: &#123;</div><div class="line">            noInfo: <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">    config.set(&#123;</div><div class="line">        <span class="attr">browsers</span>: [<span class="string">'PhantomJS'</span>],</div><div class="line">        <span class="attr">files</span>: [</div><div class="line">            &#123; <span class="attr">pattern</span>: <span class="string">'test-context.js'</span>, <span class="attr">watched</span>: <span class="literal">false</span> &#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">frameworks</span>: [<span class="string">'jasmine'</span>],</div><div class="line">        <span class="attr">preprocessors</span>: &#123;</div><div class="line">            <span class="string">'test-context.js'</span>: [<span class="string">'webpack'</span>]</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">webpack</span>: &#123;</div><div class="line">            <span class="attr">module</span>: &#123;</div><div class="line">                <span class="attr">loaders</span>: [</div><div class="line">                    &#123; <span class="attr">test</span>: <span class="regexp">/\.js$/</span>, <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>, <span class="attr">loader</span>: <span class="string">'babel?presets[]=es2015'</span> &#125;</div><div class="line"></div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">watch</span>: <span class="literal">true</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">webpackServer</span>: &#123;</div><div class="line">            <span class="attr">noInfo</span>: <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h2>Provide context including testing files</h2>
 <ul>
-<li><strong>The codes below are from <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow" target="_blank">this post</a>.</strong></li>
+<li><strong>The codes below are from <a href="http://www.syntaxsuccess.com/viewarticle/writing-jasmine-unit-tests-in-es6" rel="external nofollow noopener noreferrer" target="_blank">this post</a>.</strong></li>
 </ul>
 <p>test-context.js</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi <span class="built_in">test</span>-context.js</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"babel-polyfill"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = <span class="built_in">require</span>.context(<span class="string">'./source'</span>, <span class="literal">true</span>, <span class="regexp">/-spec\.js$/</span>);</div><div class="line">context.keys().forEach(context);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"babel-polyfill"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> context = <span class="built_in">require</span>.context(<span class="string">'./source'</span>, <span class="literal">true</span>, /-spec\.js$/);</div><div class="line">context.keys().forEach(context);</div></pre></td></tr></table></figure>
 <p>source/calculator.js</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi <span class="built_in">source</span>/calculator.js</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Calculator</span></span>&#123;</div><div class="line">    add(op1,op2)&#123;</div><div class="line">        <span class="keyword">return</span> op1 + op2;</div><div class="line">    &#125;</div><div class="line">    subtract(op1,op2)&#123;</div><div class="line">        <span class="keyword">return</span> op1 - op2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -198,7 +198,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm run tests</div></pre></td></tr></table></figure>
 <p>Enjoy testing ES6 codes!</p>
 <p>The complete code is on a github repository.<br>
-<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow" target="_blank">Karma for es6 respository</a></p>
+<a href="https://github.com/zirho/karma-es6-babel-webpack" rel="external nofollow noopener noreferrer" target="_blank">Karma for es6 respository</a></p>
 
         </div>
         <footer class="article-footer">
@@ -206,7 +206,7 @@
 
 
 
-    <a data-url="https://zirho.github.io/2016/06/06/karma-es6/" data-id="cj1oh1gba000fbxuz9mvkahqf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zirho.github.io/2016/06/06/karma-es6/" data-id="cj53axfjc0009c4uz1cbmwo5f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -290,7 +290,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/zirho" target="_blank" rel="external nofollow">
+                    <a class="social-tooltip" title="github" href="https://github.com/zirho" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -298,7 +298,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank" rel="external nofollow">
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-linkedin"></i>
                     </a>
                 </li>
@@ -315,20 +315,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/06/04/hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/06/10/es6-privacy/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            How to setup a blog on github with Hexo
+            Private properties for ES6 JavaScript
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2016/06/10/es6-privacy/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/06/04/hexo/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Private properties for ES6 JavaScript</p>
+        <p class="article-nav-title">How to setup a blog on github with Hexo</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -343,6 +343,26 @@
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/12/vim-ultisnips/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/07/12/vim-ultisnips/title.jpg)" alt="Syntax-agnostic snippets for Ultisnips" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Tools/">Tools</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Tools/VIM/">VIM</a></p>
+                            <p class="item-title"><a href="/2017/07/12/vim-ultisnips/" class="title">Syntax-agnostic snippets for Ultisnips</a></p>
+                            <p class="item-date"><time datetime="2017-07-13T02:01:21.000Z" itemprop="datePublished">07-12-2017</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -424,26 +444,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/06/10/es6-privacy/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2016/06/10/es6-privacy/private.png)" alt="Private properties for ES6 JavaScript" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
-                            <p class="item-title"><a href="/2016/06/10/es6-privacy/" class="title">Private properties for ES6 JavaScript</a></p>
-                            <p class="item-date"><time datetime="2016-06-10T21:52:05.000Z" itemprop="datePublished">06-10-2016</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -453,7 +453,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Node-js/">Node.js</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/">Firebase</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/Unit-testing/">Unit testing</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/OpenSource/">OpenSource</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/VIM/">VIM</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Node-js/">Node.js</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/">Firebase</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Firebase/Unit-testing/">Unit testing</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/OpenSource/">OpenSource</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/VIM/">VIM</a><span class="category-list-count">2</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -463,7 +463,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -473,7 +473,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMS/">CMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-Browsing/">Cross Browsing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Layout/">Layout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-source/">Open-source</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SF/">SF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XE/">XE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contribute/">contribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firebase/">firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/karma/">karma</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/legacy-code/">legacy code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private-property/">private property</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refactor/">refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntastic/">syntastic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMS/">CMS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-Browsing/">Cross Browsing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Layout/">Layout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-source/">Open-source</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SF/">SF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ultisnips/">Ultisnips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XE/">XE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contribute/">contribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deploy/">deploy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firebase/">firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-pages/">github pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/karma/">karma</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/legacy-code/">legacy code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module/">module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private-property/">private property</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refactor/">refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippets/">snippets</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntastic/">syntastic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -483,7 +483,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CMS/" style="font-size: 10px;">CMS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Cross-Browsing/" style="font-size: 10px;">Cross Browsing</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Layout/" style="font-size: 10px;">Layout</a> <a href="/tags/Open-source/" style="font-size: 10px;">Open-source</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/SF/" style="font-size: 10px;">SF</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/XE/" style="font-size: 10px;">XE</a> <a href="/tags/babel/" style="font-size: 12.5px;">babel</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/contribute/" style="font-size: 10px;">contribute</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/es2015/" style="font-size: 17.5px;">es2015</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firebase/" style="font-size: 10px;">firebase</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/legacy-code/" style="font-size: 10px;">legacy code</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/private-property/" style="font-size: 10px;">private property</a> <a href="/tags/refactor/" style="font-size: 10px;">refactor</a> <a href="/tags/syntastic/" style="font-size: 10px;">syntastic</a> <a href="/tags/unit-test/" style="font-size: 10px;">unit test</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a>
+            <a href="/tags/CMS/" style="font-size: 10px;">CMS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Conference/" style="font-size: 10px;">Conference</a> <a href="/tags/Cross-Browsing/" style="font-size: 10px;">Cross Browsing</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Layout/" style="font-size: 10px;">Layout</a> <a href="/tags/Open-source/" style="font-size: 10px;">Open-source</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/SF/" style="font-size: 10px;">SF</a> <a href="/tags/Ultisnips/" style="font-size: 10px;">Ultisnips</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/XE/" style="font-size: 10px;">XE</a> <a href="/tags/babel/" style="font-size: 12.5px;">babel</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/contribute/" style="font-size: 10px;">contribute</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/es2015/" style="font-size: 17.5px;">es2015</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firebase/" style="font-size: 10px;">firebase</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/legacy-code/" style="font-size: 10px;">legacy code</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/private-property/" style="font-size: 10px;">private property</a> <a href="/tags/refactor/" style="font-size: 10px;">refactor</a> <a href="/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/tags/syntastic/" style="font-size: 10px;">syntastic</a> <a href="/tags/unit-test/" style="font-size: 10px;">unit test</a> <a href="/tags/vim/" style="font-size: 12.5px;">vim</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a>
         </div>
     </div>
 
@@ -496,7 +496,7 @@
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io" rel="external nofollow" target="_blank">Hexo</a>
+                        <a href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>
                     </li>
                 
             </ul>

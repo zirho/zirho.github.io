@@ -7,48 +7,8 @@
     </url>
 
     <url>
-        <loc>https://zirho.github.io/2017/04/17/responsive-layout/</loc>
-        <lastmod>2017-04-19T04:21:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/2017/01/11/firebase-unit-test/</loc>
-        <lastmod>2017-01-12T05:45:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/2016/10/06/vim-syntastic-local/</loc>
-        <lastmod>2017-01-11T18:46:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/2016/08/13/webpack-to-legacy/</loc>
-        <lastmod>2016-08-16T05:28:20.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/2011/02/11/piping-xe/</loc>
-        <lastmod>2016-06-14T03:11:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/2012/08/31/jquery-conf/</loc>
-        <lastmod>2016-06-13T18:24:38.000Z</lastmod>
+        <loc>https://zirho.github.io/2017/07/12/vim-ultisnips/</loc>
+        <lastmod>2017-07-14T03:26:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -56,15 +16,15 @@
 
     <url>
         <loc>https://zirho.github.io/2016/06/10/es6-privacy/</loc>
-        <lastmod>2016-06-10T22:56:16.000Z</lastmod>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://zirho.github.io/2016/06/06/karma-es6/</loc>
-        <lastmod>2016-06-10T22:38:07.000Z</lastmod>
+        <loc>https://zirho.github.io/2017/01/11/firebase-unit-test/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,7 +32,55 @@
 
     <url>
         <loc>https://zirho.github.io/2016/06/04/hexo/</loc>
-        <lastmod>2016-06-07T01:03:19.000Z</lastmod>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2012/08/31/jquery-conf/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2016/06/06/karma-es6/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2017/04/17/responsive-layout/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2011/02/11/piping-xe/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2016/10/06/vim-syntastic-local/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/2016/08/13/webpack-to-legacy/</loc>
+        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
