@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>Syntax-agnostic snippets for Ultisnips | CodePaste</title>
@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://zirho.github.io/2017/07/12/vim-ultisnips/index.html">
 <meta property="og:site_name" content="CodePaste">
 <meta property="og:description" content="This post is for users who uses  vim or neovim Ultisnips one of plugin managers    Motivation When I work on multiple javascript projects such as open-source projects or my own projects, I need to a">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://zirho.github.io/2017/07/12/vim-ultisnips/title.jpg">
 <meta property="og:updated_time" content="2017-07-14T03:28:40.000Z">
 <meta name="twitter:card" content="summary">
@@ -130,7 +131,7 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-vim-ultisnips" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+                            <article id="post-vim-ultisnips" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -152,7 +153,7 @@
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <img src="/2017/07/12/vim-ultisnips/title.jpg" alt="ultisnips javascript, opting a semicolon" title="ultisnips javascript, opting a semicolon">
+            <img src="/2017/07/12/vim-ultisnips/title.jpg" title="ultisnips javascript, opting a semicolon">
 <ul>
 <li>This post is for users who uses
 <ul>
@@ -167,19 +168,19 @@
 <p>For example, one of the projects uses style guide which requires a trailing semicolon at the end of statement. On the other hand, other projects prohibits it.</p>
 <p>Coding style checker for eslint can be setup differently with .eslintrc in root folder of each project, but editors like vim or neovim with plugins are not agnostic enough to accommodate and work according to those styles.</p>
 <p>So I used to have something like this in my Ultisnip snippet files. With comma, without comma.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">snippet log</div><div class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;)</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">snippet log;</div><div class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;);</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snippet log</span><br><span class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;)</span><br><span class="line">endsnippet</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snippet log;</span><br><span class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;);</span><br><span class="line">endsnippet</span><br></pre></td></tr></table></figure>
 <p>This works, but it gets repetitive.</p>
 <p>So I tried to figure out how I can achieve this easily.</p>
 <p>It can be done like this.<br>
 <a href="https://github.com/honza/vim-snippets/blob/master/UltiSnips/javascript.snippets#L11-L15" rel="external nofollow noopener noreferrer" target="_blank">Ultisnip javascript</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">global !p</div><div class="line">from javascript_snippets import (</div><div class="line">  semi, space_before_function_paren, keyword_spacing</div><div class="line">  )</div><div class="line">endglobal</div></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">snippet ret &quot;Return statement&quot;</div><div class="line">return $&#123;VISUAL&#125;$0`!p snip.rv = semi(snip)`</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global !p</span><br><span class="line">from javascript_snippets import (</span><br><span class="line">  semi, space_before_function_paren, keyword_spacing</span><br><span class="line">  )</span><br><span class="line">endglobal</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snippet ret &quot;Return statement&quot;</span><br><span class="line">return $&#123;VISUAL&#125;$0`!p snip.rv = semi(snip)`</span><br><span class="line">endsnippet</span><br></pre></td></tr></table></figure>
 <p><strong>This happens in this order.</strong></p>
 <ol>
 <li>Define ultisnip variable in <code>.vimrc</code>. Vim will pick this up.</li>
 </ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let g:ultisnips_javascript = &#123;</div><div class="line">  \ &apos;keyword-spacing&apos;: &apos;always&apos;,</div><div class="line">  \ &apos;semi&apos;: &apos;never&apos;,</div><div class="line">  \ &apos;space-before-function-paren&apos;: &apos;always&apos;,</div><div class="line">  \ &#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let g:ultisnips_javascript = &#123;</span><br><span class="line">  \ &apos;keyword-spacing&apos;: &apos;always&apos;,</span><br><span class="line">  \ &apos;semi&apos;: &apos;never&apos;,</span><br><span class="line">  \ &apos;space-before-function-paren&apos;: &apos;always&apos;,</span><br><span class="line">  \ &#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>Ultisnip plugin picks that options up and has them available in ultisnip files.</li>
 <li>When snippet is being called, it prints out semicolons based on the option.</li>
@@ -187,33 +188,33 @@
 <p>This looks great but what if I want to set this up differently per project?</p>
 <p>This is where <code>vim-localrc</code> comes into play.</p>
 <p><a href="https://github.com/thinca/vim-localrc" rel="external nofollow noopener noreferrer" target="_blank">vim-localrc</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .local.vimrc</div><div class="line">└── folder1</div><div class="line">    ├── .local.vimrc</div><div class="line">    └── folder2</div><div class="line">        └── .local.vimrc</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .local.vimrc</span><br><span class="line">└── folder1</span><br><span class="line">    ├── .local.vimrc</span><br><span class="line">    └── folder2</span><br><span class="line">        └── .local.vimrc</span><br></pre></td></tr></table></figure>
 <p>If we have this folder structure in the project, the most nested .local.vimrc gets precedence sequentially. So we can put any configs in any level of the folder structure.</p>
 <p>Here's how you can set it up.</p>
 <h1>Install plugins</h1>
 <h3>Add lines in .vimrc</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Bundle &apos;thinca/vim-localrc&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bundle &apos;thinca/vim-localrc&apos;</span><br></pre></td></tr></table></figure>
 <h3>Run below commands to install the plugin in vim.</h3>
 <p>First one applies changes to vim while you are opening .vimrc file.</p>
 <p>Second does installing plugins. (this may differ by the manager)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:so %</div><div class="line">:PluginInstall</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:so %</span><br><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
 <h1>Configs</h1>
 <h3>Put global config</h3>
 <p><code>~/.vimrc</code> for vim
 <code>~/.config/nvim/init.vim</code> for neovim</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let g:ultisnips_javascript = &#123;</div><div class="line">  \ &apos;keyword-spacing&apos;: &apos;always&apos;,</div><div class="line">  \ &apos;semi&apos;: &apos;never&apos;,</div><div class="line">  \ &apos;space-before-function-paren&apos;: &apos;always&apos;,</div><div class="line">  \ &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let g:ultisnips_javascript = &#123;</span><br><span class="line">  \ &apos;keyword-spacing&apos;: &apos;always&apos;,</span><br><span class="line">  \ &apos;semi&apos;: &apos;never&apos;,</span><br><span class="line">  \ &apos;space-before-function-paren&apos;: &apos;always&apos;,</span><br><span class="line">  \ &#125;</span><br></pre></td></tr></table></figure>
 <h3>Put local config for the project to use a different setup</h3>
 <p><code>${PROJECT_DIR}/.local.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let g:ultisnips_javascript = &#123;</div><div class="line">  \ &apos;semi&apos;: &apos;always&apos;,</div><div class="line">  \ &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let g:ultisnips_javascript = &#123;</span><br><span class="line">  \ &apos;semi&apos;: &apos;always&apos;,</span><br><span class="line">  \ &#125;</span><br></pre></td></tr></table></figure>
 <h1>Custom snippets</h1>
 <h3>my own snippets for javascript</h3>
 <ul>
 <li>it's usually in <code>~/.vim/UltiSnips/javascript.snippets</code></li>
 </ul>
 <p>put this at the top of the file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">global !p</div><div class="line">from javascript_snippets import (</div><div class="line">	semi, space_before_function_paren, keyword_spacing</div><div class="line">)</div><div class="line">endglobal</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global !p</span><br><span class="line">from javascript_snippets import (</span><br><span class="line">	semi, space_before_function_paren, keyword_spacing</span><br><span class="line">)</span><br><span class="line">endglobal</span><br></pre></td></tr></table></figure>
 <p>Use it like this</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">snippet log</div><div class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;)`!p snip.rv = semi(snip)`$&#123;0&#125;</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snippet log</span><br><span class="line">console.log($&#123;1:$&#123;VISUAL&#125;&#125;)`!p snip.rv = semi(snip)`$&#123;0&#125;</span><br><span class="line">endsnippet</span><br></pre></td></tr></table></figure>
 <p>Happy coding! 🖥  🍺</p>
 
         </div>
@@ -222,7 +223,7 @@
 
 
 
-    <a data-url="https://zirho.github.io/2017/07/12/vim-ultisnips/" data-id="cj53b2l8f000k8luz7o2mymwm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zirho.github.io/2017/07/12/vim-ultisnips/" data-id="ck544jn1z000kyjuz8jvxi3ib" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -314,7 +315,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank" rel="external nofollow noopener noreferrer">
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/joshua-ji/" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-linkedin"></i>
                     </a>
                 </li>
@@ -348,7 +349,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">recents</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -526,7 +527,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 Joshua Youngjae Ji</p>
+                <p>&copy; 2020 Joshua Youngjae Ji</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>Refactor legacy code today with webpack! | CodePaste</title>
@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://zirho.github.io/2016/08/13/webpack-to-legacy/index.html">
 <meta property="og:site_name" content="CodePaste">
 <meta property="og:description" content="All codes are on github with different branches associated with process for demonstration Github code  https://github.com/zirho/webpack-to-legacy Legacy code I recently started working at SteelHous">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://zirho.github.io/2016/08/13/webpack-to-legacy/wtf_reading.jpg">
 <meta property="og:updated_time" content="2017-04-19T04:41:45.000Z">
 <meta name="twitter:card" content="summary">
@@ -130,7 +131,7 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-webpack-to-legacy" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+                            <article id="post-webpack-to-legacy" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -153,7 +154,7 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p> </p>
-<img src="/2016/08/13/webpack-to-legacy/wtf_reading.jpg" alt="WHYYYY?" title="WHYYYY?">
+<img src="/2016/08/13/webpack-to-legacy/wtf_reading.jpg" title="WHYYYY?">
 <p><strong>All codes are on github with different branches associated with process for demonstration</strong></p>
 <p><a href="https://github.com/zirho/webpack-to-legacy" rel="external nofollow noopener noreferrer" target="_blank">Github code</a>  <a href="https://github.com/zirho/webpack-to-legacy" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/zirho/webpack-to-legacy</a></p>
 <h1>Legacy code</h1>
@@ -184,19 +185,19 @@ So I decided to incorporate that in our project.</p>
 <li>
 <p>setup npm package</p>
 <p>If you have not initialized your project with npm yet, this is the perfect time to do so.</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init --y</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init --y</span><br></pre></td></tr></table></figure>
 <p>Add few run-scripts to <code>package.json</code></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;dev&quot;: &quot;webpack-dev-server --inline --hot --config webpack.config.dev.js&quot;,</div><div class="line">  &quot;build&quot;: &quot;webpack&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;dev&quot;: &quot;webpack-dev-server --inline --hot --config webpack.config.dev.js&quot;,</span><br><span class="line">  &quot;build&quot;: &quot;webpack&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>install related packages</p>
 <p>Install webpack and other stuff for workflow and transpiling.</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm i -D webpack webpack-dev-server path babel-core babel-loader babel-preset-es2015 babel-preset-stage-2</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -D webpack webpack-dev-server path babel-core babel-loader babel-preset-es2015 babel-preset-stage-2</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>config webpack</p>
 <p>create <code>webpack.config.dev.js</code> file. below is minimal config for webpack-dev-server.</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    &apos;hmr&apos;: &apos;webpack-dev-server/client?http://localhost:8080&apos;,</div><div class="line">    &apos;hmr2&apos;: &apos;webpack/hot/dev-server&apos;,</div><div class="line">    &apos;entryname&apos;: &apos;./js/entry.js&apos;,</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path:       path.join(__dirname, &apos;dist&apos;),</div><div class="line">    filename:   &apos;./bundle.js&apos;,</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test:   /\.js/,</div><div class="line">        loader: &apos;babel&apos;,</div><div class="line">        include: __dirname + &apos;/src&apos;</div><div class="line">      &#125;,</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    &apos;hmr&apos;: &apos;webpack-dev-server/client?http://localhost:8080&apos;,</span><br><span class="line">    &apos;hmr2&apos;: &apos;webpack/hot/dev-server&apos;,</span><br><span class="line">    &apos;entryname&apos;: &apos;./js/entry.js&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path:       path.join(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename:   &apos;./bundle.js&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test:   /\.js/,</span><br><span class="line">        loader: &apos;babel&apos;,</span><br><span class="line">        include: __dirname + &apos;/src&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <hr>
@@ -217,24 +218,24 @@ and it is being used everywhere in <code>legacy.js</code></p>
 <p>I take that function from <code>legacy.js</code> and put it in a newly created file called <code>utils.js</code> and have it exported like below.</p>
 </li>
 </ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export function add(num1, num2) &#123;</div><div class="line">  return num1 + num2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export function add(num1, num2) &#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>Now we want that function in global scope.</li>
 </ol>
 <p>Let's say webpack will generate the output file <code>bundle.js</code> with the entry file called <code>entry.js</code>.
 It would look like this:</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// Accept hot module reloading</div><div class="line">// To enable HMR with webpack, you have to make sure to have these lines of code in the entry files to accept hot module reloading.</div><div class="line">if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</div><div class="line">  if (module.hot) &#123;</div><div class="line">    module.hot.accept()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// using namespace import to get all exported things from the file</div><div class="line">import * as Utils from &apos;./utils&apos;</div><div class="line"></div><div class="line">// injecting every function exported from utils.js into global scope(window)</div><div class="line">Object.assign(window, Utils)</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// Accept hot module reloading</span><br><span class="line">// To enable HMR with webpack, you have to make sure to have these lines of code in the entry files to accept hot module reloading.</span><br><span class="line">if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">  if (module.hot) &#123;</span><br><span class="line">    module.hot.accept()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// using namespace import to get all exported things from the file</span><br><span class="line">import * as Utils from &apos;./utils&apos;</span><br><span class="line"></span><br><span class="line">// injecting every function exported from utils.js into global scope(window)</span><br><span class="line">Object.assign(window, Utils)</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>And put this output file before the script tag for <code>legacy.js</code> in html.</li>
 </ol>
 <p>Then, logacy.js will get to access global function <code>add</code>.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;legacy.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;legacy.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3>Now all the goodies</h3>
 <p>If I have that set in my workflow,</p>
 <ul>
 <li>I can refactor the extracted function in ES6 syntax like this.</li>
 </ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export const add = (num1, num2) =&gt; &#123;</div><div class="line">  return num1 + num2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export const add = (num1, num2) =&gt; &#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>I can add as many functions, objects, and variables as I want in <code>utils.js</code> file in ES6 ways, and those will be in global scope automatically.</p>
@@ -261,7 +262,7 @@ Maybe I will post something about unit tests on ES6 codes later on.</p>
 
 
 
-    <a data-url="https://zirho.github.io/2016/08/13/webpack-to-legacy/" data-id="cj53b2l8h000m8luzzz5erzcm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zirho.github.io/2016/08/13/webpack-to-legacy/" data-id="ck544jn21000myjuzknbs2orb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -353,7 +354,7 @@ Maybe I will post something about unit tests on ES6 codes later on.</p>
             
                 
                 <li>
-                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/johsua-ji" target="_blank" rel="external nofollow noopener noreferrer">
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/joshua-ji/" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-linkedin"></i>
                     </a>
                 </li>
@@ -397,7 +398,7 @@ Maybe I will post something about unit tests on ES6 codes later on.</p>
     <div class="widget-wrap">
         <h3 class="widget-title">recents</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -575,7 +576,7 @@ Maybe I will post something about unit tests on ES6 codes later on.</p>
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 Joshua Youngjae Ji</p>
+                <p>&copy; 2020 Joshua Youngjae Ji</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
         </div>
