@@ -2,253 +2,253 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://zirho.github.io/tags/es6/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/es2015/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://zirho.github.io/tags/private-property/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.492Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/module/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.492Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/firebase/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.493Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/unit-test/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.493Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/mocha/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.493Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/hexo/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/blog/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/github/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/github-pages/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/deploy/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/jQuery/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/Conference/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/SF/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/karma/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/babel/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/webpack/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/Unit-Testing/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/XE/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/Open-source/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/PHP/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/CMS/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/contribute/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/HTML5/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/CSS3/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/Cross-Browsing/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/Layout/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/eslint/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.506Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/syntastic/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/legacy-code/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/refactor/</loc>
-        <lastmod>2017-04-19T04:41:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://zirho.github.io/tags/JavaScript/</loc>
-        <lastmod>2017-07-14T03:28:40.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.506Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/vim/</loc>
-        <lastmod>2017-07-14T03:28:40.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.508Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/Ultisnips/</loc>
-        <lastmod>2017-07-14T03:28:40.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.508Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://zirho.github.io/tags/snippets/</loc>
-        <lastmod>2017-07-14T03:28:40.000Z</lastmod>
+        <lastmod>2020-01-07T17:09:19.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/legacy-code/</loc>
+        <lastmod>2020-01-07T17:09:19.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/refactor/</loc>
+        <lastmod>2020-01-07T17:09:19.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/JavaScript/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/es6/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/es2015/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/karma/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/babel/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/webpack/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://zirho.github.io/tags/Unit-Testing/</loc>
+        <lastmod>2020-01-07T17:10:33.513Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
